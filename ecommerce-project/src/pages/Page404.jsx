@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { Header } from "../components/Header";
 import "./Page404.css";
 
-export function Page404() {
+export function Page404({ cart }) {
   return (
     <>
-      <Header />
+      <Header cart={cart} />
 
       <div className="page-404">
         <div className="page-404-container">
@@ -18,7 +18,7 @@ export function Page404() {
               marginBottom: "40px",
             }}
           >
-            It might have been moved or deleted.
+            k It might have been moved or deleted.
           </p>
           <Link to="/" className="page-404-button button-primary">
             Back to Home
