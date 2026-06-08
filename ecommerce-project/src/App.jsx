@@ -10,17 +10,18 @@ import { Page404 } from "./pages/Page404";
 function App() {
   const [cart, setCart] = useState([]);
 
+  const loadCart = async () => {
+    const response = await axios.get("/api/cart-items?expand=product");
+    setCart(response.data);
+  };
+
   useEffect(() => {
-    const fetchAppData = async () => {
-      const response = await axios.get("/api/cart-items?expand=product");
-      setCart(response.data);
-    };
-    fetchAppData();
+    loadCart();
   }, []);
 
   return (
     <Routes>
-      <Route index element={<HomePage cart={cart} />} />
+      <Route index element={<HomePage cart={cart} loadCart={loadCart} />} />
       <Route path="checkout" element={<CheckoutPage cart={cart} />} />
       <Route path="orders" element={<OrdersPage cart={cart} />} />
       <Route
