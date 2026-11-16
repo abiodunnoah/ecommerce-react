@@ -31,6 +31,18 @@ export function CheckoutPage({ cart, loadCart }) {
     await Promise.all([loadCart(), loadCheckoutData()]);
   };
 
+  const updateQuantity = async (productId, quantity) => {
+    await axios.put(`/api/cart-items/${productId}`, { quantity });
+
+    await Promise.all([loadCart(), loadCheckoutData()]);
+  };
+
+  const deleteCartItem = async (productId) => {
+    await axios.delete(`/api/cart-items/${productId}`);
+
+    await Promise.all([loadCart(), loadCheckoutData()]);
+  };
+
   if (!paymentSummary || deliveryOptions.length === 0) {
     return <div>Loading checkout...</div>;
   }
@@ -50,6 +62,8 @@ export function CheckoutPage({ cart, loadCart }) {
             cart={cart}
             deliveryOptions={deliveryOptions}
             onDeliveryOptionChange={updateDeliveryOption}
+            onQuantityChange={updateQuantity}
+            onDeleteCartItem={deleteCartItem}
           />
 
           <PaymentSummary paymentSummary={paymentSummary} />

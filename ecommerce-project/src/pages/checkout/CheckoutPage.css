@@ -119,6 +119,24 @@
   margin-left: 3px;
 }
 
+/* The Update/Save/Cancel/Delete actions are buttons so they work from the
+   keyboard, but they should still look like the green text links. */
+.checkout-page .product-quantity button.link-primary {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
+
+.checkout-page .quantity-input {
+  width: 55px;
+  padding: 4px 6px;
+  margin-left: 3px;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 4px;
+  font: inherit;
+}
+
 @media (max-width: 1000px) {
   .checkout-page .delivery-options {
     /* grid-column: 1 means this element will be placed

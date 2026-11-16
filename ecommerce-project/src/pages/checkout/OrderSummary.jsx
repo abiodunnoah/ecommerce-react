@@ -6,6 +6,8 @@ export function OrderSummary({
   cart,
   deliveryOptions,
   onDeliveryOptionChange,
+  onQuantityChange,
+  onDeleteCartItem,
 }) {
   return (
     <div className="order-summary">
@@ -22,7 +24,11 @@ export function OrderSummary({
               <DeliveryDate selectedDeliveryOption={selectedDeliveryOption} />
 
               <div className="cart-item-details-grid">
-                <CartItemDetails cartItem={cartItem} />
+                <CartItemDetails
+                  cartItem={cartItem}
+                  onQuantityChange={onQuantityChange}
+                  onDeleteCartItem={onDeleteCartItem}
+                />
 
                 <DeliveryOptions
                   deliveryOptions={deliveryOptions}
