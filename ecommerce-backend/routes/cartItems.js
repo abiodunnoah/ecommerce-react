@@ -30,8 +30,8 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: 'Product not found' });
   }
 
-  if (typeof quantity !== 'number' || quantity < 1 || quantity > 10) {
-    return res.status(400).json({ error: 'Quantity must be a number between 1 and 10' });
+  if (typeof quantity !== 'number' || quantity < 1) {
+    return res.status(400).json({ error: 'Quantity must be a number greater than 0' });
   }
 
   let cartItem = await CartItem.findOne({ where: { productId } });
